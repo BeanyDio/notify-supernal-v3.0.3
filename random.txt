@@ -1,0 +1,69 @@
+local function FancyNotify(title, message, duration)
+    local screenGui = Instance.new("ScreenGui")
+    local frame = Instance.new("Frame")
+    local titleLabel = Instance.new("TextLabel")
+    local messageLabel = Instance.new("TextLabel")
+    local corner = Instance.new("UICorner")
+    local gradient = Instance.new("UIGradient")
+    local sideStrip = Instance.new("Frame")
+    
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+    screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    
+    frame.Parent = screenGui
+    frame.Size = UDim2.new(0, 250, 0, 80)
+    frame.Position = UDim2.new(0, 10, 0, 10)
+    frame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
+    frame.BorderSizePixel = 0
+    
+    sideStrip.Parent = frame
+    sideStrip.Size = UDim2.new(0, 6, 1, 0)
+    sideStrip.Position = UDim2.new(1, -6, 0, 0)
+    sideStrip.BackgroundColor3 = Color3.fromHex("#630d82")
+    sideStrip.BorderSizePixel = 0
+    sideStrip.ZIndex = 2
+    
+    corner.Parent = frame
+    corner.CornerRadius = UDim.new(0, 8)
+    
+    gradient.Parent = frame
+    gradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(50, 50, 70)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(30, 30, 40))
+    }
+    gradient.Rotation = 90
+    
+    titleLabel.Parent = frame
+    titleLabel.Text = title
+    titleLabel.Size = UDim2.new(0.85, 0, 0, 25) 
+    titleLabel.Position = UDim2.new(0.05, 0, 0.1, 0)
+    titleLabel.BackgroundTransparency = 1
+    titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleLabel.Font = Enum.Font.GothamBold
+    titleLabel.TextSize = 16
+    titleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    
+    messageLabel.Parent = frame
+    messageLabel.Text = message
+    messageLabel.Size = UDim2.new(0.85, 0, 0, 50) 
+    messageLabel.Position = UDim2.new(0.05, 0, 0.4, 0)
+    messageLabel.BackgroundTransparency = 1
+    messageLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    messageLabel.Font = Enum.Font.Gotham
+    messageLabel.TextSize = 14
+    messageLabel.TextXAlignment = Enum.TextXAlignment.Left
+    messageLabel.TextYAlignment = Enum.TextYAlignment.Top
+    messageLabel.TextWrapped = true
+    
+    frame.Position = UDim2.new(-0.3, 0, 0, 10)
+    frame:TweenPosition(UDim2.new(0, 10, 0, 10), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.5)
+    
+
+    wait(duration or 3)
+    frame:TweenPosition(UDim2.new(-0.3, 0, 0, 10), Enum.EasingDirection.In, Enum.EasingStyle.Quad, 0.5, false, 
+        function()
+            screenGui:Destroy()
+        end)
+end
+
+FancyNotify("Supernal Injected", "t.me/SupernalRB!\nVersion 3.0.3", 5)
