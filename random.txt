@@ -66,4 +66,4 @@ local function FancyNotify(title, message, duration)
         end)
 end
 
-FancyNotify("Supernal Injected", "t.me/SupernalRB!\nVersion 3.0.3", 5)
+FancyNotify("Supernal Injected", "t.me/SupernalRB!\nVersion 3.3.0", 5)
